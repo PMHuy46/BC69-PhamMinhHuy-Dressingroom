@@ -40,7 +40,7 @@ async function fetchData() {
         const data = await response.json();
         return data.tabPanes;
     } catch (error) {
-        console.error('There has been a problem with your fetch operation:', error);
+        console.error(error);
         throw error;
     }
 }
@@ -51,7 +51,7 @@ async function useFetchData() {
         let arr = filToWork(data)
         render(arr)
     } catch (error) {
-        console.error('Error occurred outside fetchData:', error);
+        console.error(error);
     }
 }
 
@@ -94,16 +94,16 @@ document.addEventListener("DOMContentLoaded", function () {
             current.classList.remove("active")
             this.classList.add("active")
             let id = this.id
-            const renderClick =async()=>{
+            const renderClick = async () => {
                 try {
                     const data = await fetchData()
                     console.log(id)
-                    obtofil = arrItem.find(item =>item.idelement == id)
+                    obtofil = arrItem.find(item => item.idelement == id)
                     console.log(obtofil)
-                    let arr = filToWork(data,obtofil)
+                    let arr = filToWork(data, obtofil)
                     render(arr)
                 } catch (error) {
-                    
+
                 }
             }
             renderClick()
